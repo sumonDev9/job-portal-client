@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import AuthContex from '../../context/AuthContext/AuthContext';
 
 const Navbar = () => {
+const {user} = useContext(AuthContex);
+
     const links = <>
     <li><a>Item 1</a></li>
     <li><a>Item 3</a></li>
@@ -38,8 +41,14 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end gap-5">
-    <Link to='/register'>Register</Link>
-    <Link>Sign up</Link>
+   {
+    user ?  <>
+    <button>Logout</button>
+    </> : <>
+     <Link to='/register'>Register</Link>
+     <Link to='/signin'><button>Sign up</button></Link>
+    </>
+   }
   </div>
 </div>
     );
