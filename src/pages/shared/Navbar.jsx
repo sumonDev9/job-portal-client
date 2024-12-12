@@ -7,7 +7,7 @@ const {user, logoutUser} = useContext(AuthContex);
 
     const links = <>
   <li><NavLink to='/'>Home</NavLink></li>
-  <li><NavLink to='/'>Home</NavLink></li>
+  <li><NavLink to='/myApplications'>MyApplications</NavLink></li>
   <li><NavLink to='/'>Home</NavLink></li>
     </>
     return (
