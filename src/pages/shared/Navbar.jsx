@@ -8,7 +8,8 @@ const {user, logoutUser} = useContext(AuthContex);
     const links = <>
   <li><NavLink to='/'>Home</NavLink></li>
   <li><NavLink to='/myApplications'>MyApplications</NavLink></li>
-  <li><NavLink to='/'>Home</NavLink></li>
+  <li><NavLink to='/addjob'>Add Job</NavLink></li>
+  <li><NavLink to='/myPostedJobs'>myPostedJobs</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100">
