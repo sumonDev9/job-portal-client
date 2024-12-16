@@ -2,16 +2,32 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 const ViewApplication = () => {
-    const applications = useLoaderData();
+    const application = useLoaderData();
+    conslo
     
     const handleStatusUpdated = (e, id) => {
         console.log(e.target.value, id)
+        const data = {
+            status: e.target.value
+        }
+
+        fetch(`http://localhost:5000/job-applications/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
     }
 
 
     return (
         <div>
-            <h2 className='text-3xl'>Applications for this job: {applications.length}</h2>
+            <h2 className='text-3xl'>Applications for this job: {application.length}</h2>
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
@@ -25,7 +41,7 @@ const ViewApplication = () => {
     </thead>
     <tbody>
       {
-        applications.map((app, index) => <tr key={app._id}>
+        application.map((app, index) => <tr key={app._id}>
             <th>{index+1}</th>
             <td>{app.applicant_email}</td>
             <td>Quality Control Specialist</td>
